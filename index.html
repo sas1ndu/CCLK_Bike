@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WheelDeal.lk — Buy &amp; Sell Bikes in Sri Lanka</title>
+<meta name="description" content="Sri Lanka's lightweight marketplace for used and new motorcycles. Browse bikes, watch video reviews, contact sellers directly.">
+<meta name="theme-color" content="#14171A">
+
+<!-- No web fonts, no frameworks, no build step — system fonts + ~9KB of custom CSS keep this fast on low-end mobile data. -->
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏍️</text></svg>">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-row">
+    <a href="#/" class="logo" aria-label="WheelDeal.lk home">
+      <span class="logo-mark">W<span class="logo-dot">D</span></span>
+      <span class="logo-text">WheelDeal<span class="logo-lk">.lk</span></span>
+    </a>
+    <button class="icon-btn" id="searchToggle" aria-label="Toggle search" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <div class="search-row" id="searchRow">
+    <input type="search" id="searchInput" placeholder="Search e.g. Pulsar, Dio, Kandy…" autocomplete="off" inputmode="search">
+  </div>
+
+  <nav class="chip-row" id="chipRow" aria-label="Filter by category">
+    <button class="chip is-active" data-cat="all">All bikes</button>
+    <button class="chip" data-cat="scooter">Scooters</button>
+    <button class="chip" data-cat="commuter">Commuters</button>
+    <button class="chip" data-cat="sport">Sport</button>
+    <button class="chip" data-cat="cruiser">Cruiser</button>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Listing view -->
+  <section id="listView">
+    <div class="result-bar">
+      <span id="resultCount">Loading bikes…</span>
+      <select id="sortSelect" aria-label="Sort listings">
+        <option value="new">Newest first</option>
+        <option value="lowprice">Price: low to high</option>
+        <option value="highprice">Price: high to low</option>
+        <option value="lowkm">Mileage: low to high</option>
+      </select>
+    </div>
+    <div class="grid" id="productGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>No bikes match that search. Try a different model or town.</p>
+  </section>
+
+  <!-- Detail view (single product, filled by JS) -->
+  <section id="detailView" hidden></section>
+</main>
+
+<footer class="site-footer">
+  <p>Built as a lightweight sample marketplace · No frameworks, no tracking, ~15KB total on first load.</p>
+</footer>
+
+<!-- Video modal: the YouTube iframe is only created when a user actually taps "Watch video",
+     so nobody downloads YouTube's player JS just for browsing the grid. -->
+<div class="modal" id="videoModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel">
+    <button class="modal-close" data-close aria-label="Close video">✕</button>
+    <div class="video-frame" id="videoFrame"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
